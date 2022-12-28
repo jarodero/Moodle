@@ -22,15 +22,15 @@ jobs:
     - name: Log in to registry
       uses: docker/login-action@v1
       with:
-        registry: https://mcr.microsoft.com/
-        username: ${{ secrets.AzureAppService_ContainerUsername_a8e0c1aeed38444694351dc1044cdc10 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_91e9eca75619404798ee14bcc3d1b391 }}
+        registry: https://hub.docker.com/r/moodlehq/moodleapp/
+        username: ${{ secrets.AzureAppService_ContainerUsername_bed8c9982ed745d6895b5ef0a81bd732 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_fbfb835e29874f9aa628e47edf6d61b2 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_a8e0c1aeed38444694351dc1044cdc10 }}/azure-app-service/windows/parkingpage:${{ github.sha }}
+        tags: hub.docker.com/r/moodlehq/moodleapp/${{ secrets.AzureAppService_ContainerUsername_bed8c9982ed745d6895b5ef0a81bd732 }}/r/moodlehq/moodleapp/r/moodlehq/moodleapp/r/moodlehq/moodleapp/tags/appsvc/staticsite:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'app-mb-learning'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_66f690315d274947b6b5230eea98bfcc }}
-        images: 'mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_a8e0c1aeed38444694351dc1044cdc10 }}/azure-app-service/windows/parkingpage:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_98533adc393942598944021fc8014602 }}
+        images: 'hub.docker.com/r/moodlehq/moodleapp/${{ secrets.AzureAppService_ContainerUsername_bed8c9982ed745d6895b5ef0a81bd732 }}/r/moodlehq/moodleapp/r/moodlehq/moodleapp/r/moodlehq/moodleapp/tags/appsvc/staticsite:${{ github.sha }}'
